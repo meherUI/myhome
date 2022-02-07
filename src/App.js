@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./App.scss";
+import {throttle} from 'lodash'
 
 import ListingCard from "./components/ListingCard";
 
@@ -26,28 +27,18 @@ function App() {
    setListData(data);
   }, []);
 
-  const throttle = (func, limit) => {
-    let inThrottle;
-    return function () {
-      const args = arguments;
-      if (!inThrottle) {
-        func.apply(args);
-        inThrottle = true;
-        setTimeout(() => (inThrottle = false), limit);
-      }
-    };
-  };
-
   const addBlock = () => {    
-    if (listData && listData.length > 0) {
-      const data = deriveData()
+    const data = deriveData();
+    if (data && data.length > 0) {
       window.location.href =  window.location.href+`,cd${data.length+1}`
     }else{
       window.location.href =  window.location.href+`?data=cd1`
     }
   };
 
-  const throttleIt = throttle(addBlock, 5000)
+  const throttleIt = useCallback(
+    throttle(addBlock, 5000, { 'trailing': false }), []
+  )
   
   return (
     <div className="container">
