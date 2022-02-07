@@ -1,0 +1,74 @@
+@import './sass/variables';
+@import './sass/breakpoint';
+@import './sass/grid';
+@import './App.scss';
+@import './sass/buttons.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600&display=swap');
+
+html{
+  font-size: 10px;
+}
+body {
+  margin: 0;  
+  font-family: 'Public Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media screen and (max-width:768px){
+  .border-in-sm{
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: center;
+  }
+  .btn-primary{
+    color: $primary;
+    background-color: $white;
+    border: none; 
+    padding: 24px; 
+  }
+}
+
+@media screen and (min-width:768px) and (max-width:1024px){  
+  .btn-primary{       
+    margin-left: 32px;
+  }
+}
+@media screen and (min-width:1025px){  
+  .btn-primary{       
+    margin-left: 224px;
+  }
+}
+
+
+
+.listingCard{
+  text-align: left;
+  padding:40px 32px ;  
+  img{
+    border-radius: 5px;
+    width:100%
+  }
+  .title{
+    color: $txt-primary;
+    font-size: $txt-font-primary;
+    margin: 8px 0;
+    height: 21px;
+    line-height: 21px;
+  }
+  .description{
+    color: $txt-secondary;
+    font-size: $txt-font-secondary;
+    margin: 4px 0;
+    height: 20px;
+    line-height: 20px;
+  }
+  .price{
+    color: $txt-primary;
+    font-size: $txt-font-secondary;
+    margin: 4px 0;
+    height: 20px;
+    line-height: 20px;
+  }
+}
